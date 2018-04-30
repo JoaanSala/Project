@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Resultats_Partida"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Dia_Hora"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/Day_Hour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Log"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/Log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Email"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <EditText
+        android:id="@+id/Email_ToSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Email_Desti"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/button_Email"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Send_Email"
+            android:drawableLeft="@drawable/email_icon"
+            android:onClick="clickSend"/>
+        <Button
+            android:id="@+id/button_Return"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="@string/New_Game"
+            android:drawableLeft="@drawable/flecha"
+            android:onClick="clickNew"/>
+        <Button
+            android:id="@+id/button_Exit"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Sortir"
+            android:drawableLeft="@drawable/shutdown"
+            android:onClick="clickExit"/>
+
+    </LinearLayout>
+</LinearLayout>

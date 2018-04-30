@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Reversi_game</string>
+
+    <!--Main layout -->
+    <string name="Ajuda">Ajuda</string>
+    <string name="Començar_Partida">Començar partida</string>
+    <string name="Sortir">Sortir</string>
+
+    <!--Help layout -->
+    <string name="Help_titol">Benvingut al joc del REVERSI !</string>
+    <string name="Help_text">El juego consiste en llenar el tablero con el máximo número de fichas de tu color (el negro), haciendo girar las fichas del oponente (la app), que son blancas. \n
+    En cada turno, el jugador coloca una ficha en una casilla vacía, por lo que entre esta y otra del mismo color se rodea una o más fichas del oponente. Las fichas entre ambas quedan automáticamente convertidas al color de quien ha tirado. \n
+    Las líneas cuentan en horizontal, diagonal y vertical. Una misma ficha puede capturar piezas en diferentes líneas, si consigue rodearlas de este mismo color. \n
+    Si un jugador no puede colocar ninguna ficha de la manera descrita, pierde el turno. Sigue la alternancia hasta que ninguno de los dos puede colocar una ficha o bien todo el tablero ha quedado cubierto de fichas. \n
+    Gana el jugador que ha conseguido colocar más fichas de su color.</string>
+    <string name="Tornar">Tornar enrera</string>
+
+    <!--Configuration Layout -->
+    <string name="Alias_Identificatiu">Alias Identificatiu</string>
+    <string name="Mida_Graella">Mida Graella</string>
+    <string name="Control_Temps">Control del temps</string>
+    <string name="Start">Començar</string>
+    <string name="ERROR_Alias">Es necessita un ALIAS per començar</string>
+    
+    <!--Game Layout -->
+    <string name="game_title">Partida en Marxa</string>
+    <string name="game_c_left">\'%s\' caselles pendents</string>
+    <string name="game_time">\'%s\' sec. restants</string>
+    <string name="game_turn">Turno: \'%s\'</string>
+    <string name="game_score_player">Tu :  \'%s\' </string>
+    <string name="game_score_cpu">Opponent : \'%s\'</string>
+
+
+    <!--Results Layout-->
+    <string name="Email">E-mail</string>
+    <string name="Email_Desti">jonsala23@gmail.com</string>
+    <string name="Log">Valors del Log</string>
+    <string name="Dia_Hora">Dia i Hora</string>
+    <string name="Resultats_Partida">RESULTATS PARTIDA</string>
+    <string name="Send_Email">Enviar E-mail</string>
+    <string name="New_Game">Nova Partida</string>
+
+</resources>
