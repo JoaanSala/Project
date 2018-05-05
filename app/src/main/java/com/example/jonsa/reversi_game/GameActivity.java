@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +17,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+//import com.example.jonsa.reversi_game.Game_Model.*;
 
 import java.util.ArrayList;
 
@@ -36,9 +39,11 @@ public class GameActivity extends AppCompatActivity {
     protected boolean game_timer;
 
     protected String game_player;
-    protected GameModel game_model;
+    protected Game_Model game_model;
     protected String current_turn;
     private MediaPlayer player;
+    private Integer Grey;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        Grey = getResources().getColor(R.color.Grey);
 
         String templateMesageTurn = getString(R.string.game_turn);
         String templateScorePlayer = getString(R.string.game_score_player);
@@ -68,32 +74,31 @@ public class GameActivity extends AppCompatActivity {
             ArrayList<Integer> p_list = savedInstanceState.getIntegerArrayList(PLAYER_LIST);
             ArrayList<Integer> cpu_list = savedInstanceState.getIntegerArrayList(CPU_LIST);
             //set up initial grid
-            game_model = new GameModel(grid_size, null, null);
+            game_model = new Game_Model(grid_size, null, null);
             game_model.setCPUPieces(cpu_list);
             game_model.setPlayerPieces(p_list);
         } else {
             //load config
             Intent i = getIntent();
             grid_size = i.getIntExtra(SELECTED_SIZE, 4);
-            game_timer = i.getBooleanExtra(TIMER, false);
+            game_timer = i.getBooleanExtra(TIME, false);
             game_player = i.getStringExtra(PLAYER_NAME);
 
             //set up initial grid
-            game_model = new GameModel(grid_size, null, null);
+            game_model = new Game_Model(grid_size, null, null);
         }
 
         //time text
         TextView time_t = (TextView) findViewById(R.id.game_time);
 
-        int t_limit = grid_size * 15;
         if (!game_timer) {
-            t_limit = 0;
+            int t_limit = 0;
             String t = "∞ ";
             String m_t = String.format(templateInitialTime, t);
             time_t.setText(m_t);
             //time_t.setVisibility(View.INVISIBLE);
         } else {
-            t_limit = grid_size * 15;
+            int t_limit = grid_size * 15;
             String m_t =
                     String.format(templateInitialTime, String.valueOf(t_limit));
             time_t.setText(m_t);
@@ -104,7 +109,7 @@ public class GameActivity extends AppCompatActivity {
         String m_t = String.format(templateMesageTurn, game_player);
         turn.setText(m_t);
 
-        //player score text
+       //player score text
         TextView score_p = (TextView) findViewById(R.id.game_score_player);
         String m_p = String.format(templateScorePlayer, String.valueOf(game_model.getPlayerCount()));
         score_p.setText(m_p);
@@ -119,18 +124,20 @@ public class GameActivity extends AppCompatActivity {
         String m_r = String.format(templateRemaining, String.valueOf(game_model.getRemainingCount()));
         remaining.setText(m_r);
 
+
         //set up grid
         GridView grid = (GridView) findViewById(R.id.grid);
         grid.setNumColumns(grid_size);
         grid.setVerticalSpacing(2);
         grid.setHorizontalSpacing(2);
-        grid.setAdapter(new ReversiAdapter(this, game_model.getPieces(GameModel.PC),
-                game_model.getPieces(GameModel.CPU), game_model.getPieces(GameModel.PCp),
-                game_model.getPieces(GameModel.CPUp)));
+        grid.setAdapter(new ReversiAdapter(this, game_model.getPieces(Game_Model.PC),
+                game_model.getPieces(Game_Model.CPU), game_model.getPieces(Game_Model.PCp),
+                game_model.getPieces(Game_Model.CPUp)));
         grid.setOnItemClickListener(new GridInfo());
 
         current_turn = game_model.PC;
-        game_model.playGame(t_limit);
+        int t_limit = grid_size * 15;
+        //game_model.playGame(t_limit);
     }
 
     private void playSound(int soundId) {
@@ -144,13 +151,12 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean checkCell(int position) {
         if (game_model.isPlayerTurn(current_turn)) {
-            GameModel.Coordinates c = game_model.parsePosition(position);
+            Game_Model.Coordinates c = game_model.parsePosition(position);
             return game_model.checkPlayerPossible(c);
         } else {
-            GameModel.Coordinates c = game_model.parsePosition(position);
+            Game_Model.Coordinates c = game_model.parsePosition(position);
             return game_model.checkCPUPossible(c);
         }
-
     }
 
     //save state
@@ -163,8 +169,8 @@ public class GameActivity extends AppCompatActivity {
         savedInstanceState.putBoolean(TIMER, this.game_timer);
 
         //save game model
-        savedInstanceState.putIntegerArrayList(PLAYER_LIST, this.game_model.getPieces(GameModel.PC));
-        savedInstanceState.putIntegerArrayList(CPU_LIST, this.game_model.getPieces(GameModel.CPU));
+        savedInstanceState.putIntegerArrayList(PLAYER_LIST, this.game_model.getPieces(Game_Model.PC));
+        savedInstanceState.putIntegerArrayList(CPU_LIST, this.game_model.getPieces(Game_Model.CPU));
 
     }
 
@@ -183,15 +189,15 @@ public class GameActivity extends AppCompatActivity {
         finish();
     }
 
+
     protected int getCellSize() {
         Resources r = getResources();
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 290 / grid_size, r.getDisplayMetrics());
         return Math.round(px);
     }
 
-    public int getRemaining() {
-        return this.game_model.getRemainingCount();
-    }
+
+    public int getRemaining() { return this.game_model.getRemainingCount();}
 
 
     protected class ReversiAdapter extends BaseAdapter {
@@ -253,7 +259,7 @@ public class GameActivity extends AppCompatActivity {
             else if (cpu_pos.contains(position))
                 cell.setBackgroundResource(R.drawable.red_circle);
             else
-                cell.setBackgroundResource(R.drawable.cell);
+                cell.setBackgroundResource(R.drawable.empty_cell);
         }
     }
 
@@ -270,8 +276,26 @@ public class GameActivity extends AppCompatActivity {
                 playSound(R.raw.good_click);
             } else {
                 playSound(R.raw.wrong_click);
-                String mes = "La casella " + position + " no es valida";
-                showMesage(mes);
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast_message,
+                        (ViewGroup) findViewById(R.id.linearlayout_error));
+
+                ImageView image = (ImageView) layout.findViewById(R.id.Image);
+                image.setMaxWidth(75);
+                image.setMaxHeight(75);
+                image.setImageResource(R.drawable.cruz_roja);
+                image.setBackgroundColor(Grey);
+                TextView text = (TextView) layout.findViewById(R.id.Text);
+                text.setBackgroundColor(Grey);
+                text.setText(R.string.Error);
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+                //String mes = "La casella " + position + " no es valida";
+               // showMesage(mes);
             }
         }
     }

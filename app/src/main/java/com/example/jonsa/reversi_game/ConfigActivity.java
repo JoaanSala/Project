@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ConfigActivity extends AppCompatActivity{
@@ -20,9 +25,11 @@ public class ConfigActivity extends AppCompatActivity{
     protected Boolean timer_on;
     protected Integer size;
 
-    RadioGroup radioGroup;
-    EditText editText;
-    CheckBox checkBox;
+    protected RadioGroup RadioGroup;
+    protected EditText editText;
+    protected CheckBox checkBox;
+
+    private Integer Grey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +43,13 @@ public class ConfigActivity extends AppCompatActivity{
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        radioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroupInfo());
+        RadioGroup = (RadioGroup) findViewById(R.id.radio_group);
+        RadioGroup.setOnCheckedChangeListener(new RadioGroupInfo());
 
         editText = (EditText) findViewById(R.id.editText);
         checkBox = (CheckBox) findViewById(R.id.checkbox);
+
+        Grey = getResources().getColor(R.color.Grey);
 
         if(savedInstanceState !=  null) {
 
@@ -48,8 +57,8 @@ public class ConfigActivity extends AppCompatActivity{
             checkBox.setChecked(savedInstanceState.getBoolean(TIMER));
 
             int s = savedInstanceState.getInt(SELECTED_SIZE);
-            for (int i = 0; i < radioGroup.getChildCount(); i++) {
-                RadioButton r = (RadioButton) radioGroup.getChildAt(i);
+            for (int i = 0; i < RadioGroup.getChildCount(); i++) {
+                RadioButton r = (RadioButton) RadioGroup.getChildAt(i);
                 if (Integer.valueOf(r.getText().toString()) == s)
                     r.toggle();
             }
@@ -64,7 +73,24 @@ public class ConfigActivity extends AppCompatActivity{
     public void clickStartGame(View src) {
 
         if(editText.getText().toString().equals("")){
-            Toast.makeText(this, R.string.ERROR_Alias, Toast.LENGTH_LONG).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toast_message,
+                    (ViewGroup) findViewById(R.id.linearlayout_error));
+
+            ImageView image = (ImageView) layout.findViewById(R.id.Image);
+            image.setMaxWidth(75);
+            image.setMaxHeight(75);
+            image.setImageResource(R.drawable.profile_error);
+            image.setBackgroundColor(Grey);
+            TextView text = (TextView) layout.findViewById(R.id.Text);
+            text.setBackgroundColor(Grey);
+            text.setText(R.string.Profile);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
 
         }else {
             Intent i = new Intent(this, GameActivity.class);
@@ -86,9 +112,9 @@ public class ConfigActivity extends AppCompatActivity{
 
     public Integer getSize() {
         Integer s = 0;                                       //initialized jsut in case
-        int count = radioGroup.getChildCount();
+        int count = RadioGroup.getChildCount();
         for (int i = 0; i < count; i++) {
-            RadioButton r = (RadioButton) radioGroup.getChildAt(i);
+            RadioButton r = (RadioButton) RadioGroup.getChildAt(i);
             if (r.isChecked()) {
                 s = Integer.valueOf(r.getText().toString());
             }

@@ -27,16 +27,12 @@ public class TestActivity extends AppCompatActivity {
     protected int grid;
     protected int remaining;
     protected int player;
-    protected int npc;
-    protected int clock;
+    protected int cpu;
+    protected float clock;
     private EditText Email;
     private EditText Log;
     private EditText Day_Hour;
     private Intent in;
-
-    Button buttonReturn;
-    Button buttonSendEmail;
-    Button buttonExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +65,9 @@ public class TestActivity extends AppCompatActivity {
         grid = i.getIntExtra(GRID, 4);
         remaining = i.getIntExtra(REMAINING, 4);
         player = i.getIntExtra(PLAYER_LIST, 2);
-        npc = i.getIntExtra(CPU_LIST, 2);
-        clock = i.getIntExtra(TIME, 0);
+        cpu = i.getIntExtra(CPU_LIST, 2);
+        clock = i.getFloatExtra(TIME, 0);
+
 
         this.createLog();
 
@@ -86,18 +83,18 @@ public class TestActivity extends AppCompatActivity {
         //afegir mida
         log = log + "Mida graella: " + grid + ". ";
         //affegir temps
-        log = log + "Temps Total: " + clock + ". ";
+        log = log + "Temps Total: " + clock + "s. ";
         //afegir dades partida
-        if (player > npc)
+        if (player > cpu)
             log = log + "Has guanyat !!";
-        else if (npc > player)
+        else if (cpu > player)
             log = log + "Has perdut !!";
         else
             log = log + "Heu empatat ";
         //dades dels jugadors
         log = log + "Tu: " + player + ". ";
-        log = log + "Oponent: " + npc + ". ";
-        int difference = Math.abs(player - npc);
+        log = log + "Oponent: " + cpu + ". ";
+        int difference = Math.abs(player - cpu);
         log = log + difference + " caselles de diferencia !";
         if (remaining > 0)
             log = log + "Han quedat " + remaining + " caselles per cobrir.";
@@ -115,21 +112,21 @@ public class TestActivity extends AppCompatActivity {
 
     //send button
     public void clickSend(View src) {
-        Intent i = new Intent(Intent.ACTION_SENDTO);
-        i.setType("text/html");
-        i.setData(Uri.parse("mailto:" + this.getMail()));
-        i.putExtra(Intent.EXTRA_SUBJECT, "PracticaAndroid1");
-        i.putExtra(Intent.EXTRA_TEXT, this.getLog());
-        startActivity(i);
+        in = new Intent(Intent.ACTION_SENDTO);
+        in.setType("text/html");
+        in.setData(Uri.parse("mailto:" + this.getMail()));
+        in.putExtra(Intent.EXTRA_SUBJECT, "PracticaAndroid1");
+        in.putExtra(Intent.EXTRA_TEXT, this.getLog());
+        startActivity(in);
 
-        startActivity(i);
+        startActivity(in);
         finish();
     }
 
     //new button
     public void clickNew(View src) {
-        Intent i = new Intent(this, ConfigActivity.class);
-        startActivity(i);
+        in = new Intent(this, ConfigActivity.class);
+        startActivity(in);
         finish();
     }
 

@@ -20,7 +20,6 @@
     <string name="Mida_Graella">Mida Graella</string>
     <string name="Control_Temps">Control del temps</string>
     <string name="Start">Començar</string>
-    <string name="ERROR_Alias">Es necessita un ALIAS per començar</string>
     
     <!--Game Layout -->
     <string name="game_title">Partida en Marxa</string>
@@ -29,6 +28,7 @@
     <string name="game_turn">Turno: \'%s\'</string>
     <string name="game_score_player">Tu :  \'%s\' </string>
     <string name="game_score_cpu">Opponent : \'%s\'</string>
+    <string name="game_results">Resultats</string>
 
 
     <!--Results Layout-->
@@ -39,5 +39,15 @@
     <string name="Resultats_Partida">RESULTATS PARTIDA</string>
     <string name="Send_Email">Enviar E-mail</string>
     <string name="New_Game">Nova Partida</string>
+
+
+    <!--Toast Strings -->
+    <string name="Error">LA CASELLA NO ES VÀLIDA</string>
+    <string name="Blcok">BLOQUEIG! US HEU QUEDAT SENSE PODER MOURE CAP DELS DOS!</string>
+    <string name="Draw">VAJA... HEU EMPATAT!!</string>
+    <string name="Lose">GAME OVER... MALA SORT HAS PERDUT!!</string>
+    <string name="Out_Time">TEMPS ESGOTAT... REPETEIX SORT!</string>
+    <string name="Win">GAME OVER... BEN FET HAS GUANYAT!!</string>
+    <string name="Profile">ES NECESSITA UN ALIAS PER COMENÇAR!</string>
 
 </resources>
