@@ -84,7 +84,7 @@ public class ConfigActivity extends AppCompatActivity{
             image.setBackgroundColor(Grey);
             TextView text = (TextView) layout.findViewById(R.id.Text);
             text.setBackgroundColor(Grey);
-            text.setText(R.string.Profile);
+            text.setText(R.string.TOAST_Profile);
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

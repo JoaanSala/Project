@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/CONFIG_Alias_Identificatiu"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textColor="#000000"/>
 
     <LinearLayout
@@ -29,7 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:layout_width="43dp"
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/CONFIG_Control_Temps"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:textColor="#000000"/>
 
     <LinearLayout
@@ -101,7 +101,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"

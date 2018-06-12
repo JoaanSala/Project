@@ -2,52 +2,90 @@
     <string name="app_name">Reversi_game</string>
 
     <!--Main layout -->
-    <string name="Ajuda">Ajuda</string>
-    <string name="Començar_Partida">Començar partida</string>
-    <string name="Sortir">Sortir</string>
+    <string name="MAIN_Ajuda">Ajuda</string>
+    <string name="MAIN_Començar_Partida">Començar partida</string>
+    <string name="MAIN_DataBase">Consultar Partides</string>
+    <string name="MAIN_Sortir">Sortir</string>
 
     <!--Help layout -->
-    <string name="Help_titol">Benvingut al joc del REVERSI !</string>
-    <string name="Help_text">El juego consiste en llenar el tablero con el máximo número de fichas de tu color (el negro), haciendo girar las fichas del oponente (la app), que son blancas. \n
+    <string name="HELP_titol">Benvingut al joc del REVERSI !</string>
+    <string name="HELP_text">El juego consiste en llenar el tablero con el máximo número de fichas de tu color (el negro), haciendo girar las fichas del oponente (la app), que son blancas. \n
     En cada turno, el jugador coloca una ficha en una casilla vacía, por lo que entre esta y otra del mismo color se rodea una o más fichas del oponente. Las fichas entre ambas quedan automáticamente convertidas al color de quien ha tirado. \n
     Las líneas cuentan en horizontal, diagonal y vertical. Una misma ficha puede capturar piezas en diferentes líneas, si consigue rodearlas de este mismo color. \n
     Si un jugador no puede colocar ninguna ficha de la manera descrita, pierde el turno. Sigue la alternancia hasta que ninguno de los dos puede colocar una ficha o bien todo el tablero ha quedado cubierto de fichas. \n
     Gana el jugador que ha conseguido colocar más fichas de su color.</string>
-    <string name="Tornar">Tornar enrera</string>
+    <string name="HELP_Tornar">Tornar enrera</string>
 
     <!--Configuration Layout -->
-    <string name="Alias_Identificatiu">Alias Identificatiu</string>
-    <string name="Mida_Graella">Mida Graella</string>
-    <string name="Control_Temps">Control del temps</string>
-    <string name="Start">Començar</string>
-    
-    <!--Game Layout -->
-    <string name="game_title">Partida en Marxa</string>
-    <string name="game_c_left">\'%s\' caselles pendents</string>
-    <string name="game_time">\'%s\' sec. restants</string>
-    <string name="game_turn">Turno: \'%s\'</string>
-    <string name="game_score_player">Tu :  \'%s\' </string>
-    <string name="game_score_cpu">Opponent : \'%s\'</string>
-    <string name="game_results">Resultats</string>
+    <string name="CONFIG_Alias_Identificatiu">Alias Identificatiu</string>
+    <string name="CONFIG_Mida_Graella">Mida Graella</string>
+    <string name="CONFIG_Control_Temps">Control del temps</string>
+    <string name="CONFIG_Start">Començar</string>
 
+    <!--Game Layout -->
+    <string name="GAME_title">Partida en Marxa</string>
+    <string name="GAME_c_left">\'%s\' caselles pendents</string>
+    <string name="GAME_time">\'%s\' sec. restants</string>
+    <string name="GAME_turn">Turno: \'%s\'</string>
+    <string name="GAME_score_player">PLY1 :  \'%s\' </string>
+    <string name="GAME_score_cpu">COM : \'%s\'</string>
+    <string name="GAME_results">Resultats</string>
+    <string name="GAME_ok">OK</string>
 
     <!--Results Layout-->
-    <string name="Email">E-mail</string>
-    <string name="Email_Desti">jonsala23@gmail.com</string>
-    <string name="Log">Valors del Log</string>
-    <string name="Dia_Hora">Dia i Hora</string>
-    <string name="Resultats_Partida">RESULTATS PARTIDA</string>
-    <string name="Send_Email">Enviar E-mail</string>
-    <string name="New_Game">Nova Partida</string>
+    <string name="TEST_Email">E-mail</string>
+    <string name="TEST_Email_Desti">jonsala23@gmail.com</string>
+    <string name="TEST_Log">Valors del Log</string>
+    <string name="TEST_Dia_Hora">Dia i Hora</string>
+    <string name="TEST_Resultats_Partida">RESULTATS PARTIDA</string>
+    <string name="TEST_Send_Email">Enviar E-mail</string>
+    <string name="TEST_New_Game">Nova Partida</string>
 
+
+    <!--  Log -->
+    <string name="LOG_alias">Alias = \'%s\'; </string>
+    <string name="LOG_mida">Mida graella = \'%s\'</string>
+    <string name="LOG_with_timer">Control de temps</string>
+    <string name="LOG_without_timer">Sense control de temps</string>
+    <string name="LOG_time_left">Temps restant = \'%s\' sec.</string>
+    <string name="LOG_turn">Torn: \'%s\'</string>
+    <string name="LOG_play">Casella seleccionada: \'%s\'</string>
+    <string name="LOG_remaining">Casella seleccionada: \'%s\'</string>
+    <string name="LOG_play_i">Templs in. tirada: \'%s\'sec; </string>
+    <string name="LOG_play_f">Temps fi. tirada = \'%s\' sec.</string>
+    <string name="LOG_separator">- - - - - - - - - - - - - - - </string>
 
     <!--Toast Strings -->
-    <string name="Error">LA CASELLA NO ES VÀLIDA</string>
-    <string name="Blcok">BLOQUEIG! US HEU QUEDAT SENSE PODER MOURE CAP DELS DOS!</string>
-    <string name="Draw">VAJA... HEU EMPATAT!!</string>
-    <string name="Lose">GAME OVER... MALA SORT HAS PERDUT!!</string>
-    <string name="Out_Time">TEMPS ESGOTAT... REPETEIX SORT!</string>
-    <string name="Win">GAME OVER... BEN FET HAS GUANYAT!!</string>
-    <string name="Profile">ES NECESSITA UN ALIAS PER COMENÇAR!</string>
+    <string name="TOAST_Error">LA CASELLA NO ES VÀLIDA</string>
+    <string name="TOAST_Block">BLOQUEIG! US HEU QUEDAT SENSE PODER MOURE CAP DELS DOS!</string>
+    <string name="TOAST_Draw">VAJA... HEU EMPATAT!!</string>
+    <string name="TOAST_Lose">GAME OVER... MALA SORT HAS PERDUT!!</string>
+    <string name="TOAST_Out_Time">TEMPS ESGOTAT... REPETEIX SORT!</string>
+    <string name="TOAST_Win">GAME OVER... BEN FET HAS GUANYAT!!</string>
+
+    <string name="TOAST_Profile">ES NECESSITA UN ALIAS PER COMENÇAR!</string>
+
+
+    <!--Menu -->
+    <string name="MENU_preferences">Menu</string>
+    <string name="MENU_restart">Reiniciar</string>
+    <string name="MENU_giveup">Hem Rendeixo!</string>
+
+    <!-- Menus -->
+    <string-array name="MENU_grid_sizes">
+        <item name="small">4</item>
+        <item name="medium">6</item>
+        <item name="large">8</item>
+    </string-array>
+    <string-array name="MENU_sizes">
+        <item name="small">petit: 4</item>
+        <item name="medium">mitja: 6</item>
+        <item name="large">gran: 8</item>
+    </string-array>
+
+    <string name="MENU_get_all">Totes les partides </string>
+    <string name="MENU_send_mail">Enviar per correu</string>
+    <string name="MENU_delete_this">Esborrar aquest</string>
+
 
 </resources>
